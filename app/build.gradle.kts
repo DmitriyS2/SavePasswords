@@ -41,6 +41,9 @@ android {
 }
 
 dependencies {
+    implementation(project(":common"))
+    implementation(project(":util"))
+    implementation(project(":app_feature:login_feature"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)

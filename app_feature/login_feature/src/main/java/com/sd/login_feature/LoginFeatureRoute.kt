@@ -1,0 +1,9 @@
+package com.sd.login_feature
+
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.runtime.Composable
+
+@Composable
+fun LoginFeatureRoute(innerPadding: PaddingValues) {
+
+}

@@ -1,4 +1,4 @@
-package com.sd.savepasswords.ui.theme
+package com.sd.util.ui
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

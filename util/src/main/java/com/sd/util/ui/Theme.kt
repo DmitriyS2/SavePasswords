@@ -1,4 +1,4 @@
-package com.sd.savepasswords.ui.theme
+package com.sd.util.ui
 
 import android.app.Activity
 import android.os.Build
