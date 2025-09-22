@@ -13,7 +13,9 @@ import androidx.navigation.compose.rememberNavController
 import com.sd.common.Routes
 import com.sd.login_feature.LoginFeatureRoute
 import com.sd.util.ui.SavePasswordsTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -16,8 +16,8 @@ abstract class MviViewModel<S : MviState, A : MviEvent, E : MviEffect> : ViewMod
     private val _state: MutableStateFlow<S> = MutableStateFlow(initialState)
     val state get() = _state.asStateFlow()
 
-    private val _action: MutableSharedFlow<A> = MutableSharedFlow()
-    val action get() = _action.asSharedFlow()
+    private val _event: MutableSharedFlow<A> = MutableSharedFlow()
+    val event get() = _event.asSharedFlow()
 
     private val _effect = MutableSharedFlow<E>()
     val effect get() = _effect.asSharedFlow()
@@ -30,10 +30,10 @@ abstract class MviViewModel<S : MviState, A : MviEvent, E : MviEffect> : ViewMod
 
     abstract fun initialState(): S
 
-    abstract fun handleEvent(action: A)
+    abstract fun handleEvent(event: A)
 
-    fun setAction(action: A) {
-        viewModelScope.launch { _action.emit(action) }
+    fun setEvent(event: A) {
+        viewModelScope.launch { _event.emit(event) }
     }
 
     fun setState(reduce: (S) -> S) {
@@ -46,7 +46,7 @@ abstract class MviViewModel<S : MviState, A : MviEvent, E : MviEffect> : ViewMod
 
     private fun subscribeEvents() {
         viewModelScope.launch {
-            action.collect { handleEvent(it) }
+            event.collect { handleEvent(it) }
         }
     }
 }
