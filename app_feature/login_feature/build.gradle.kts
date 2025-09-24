@@ -41,6 +41,7 @@ dependencies {
 
     implementation(project(":app_feature:base_feature"))
     implementation(project(":util"))
+    implementation(project(":data"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

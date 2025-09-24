@@ -15,10 +15,14 @@ internal object LoginContract {
     data class State(
         val loginText: String = "",
         val passwordText: String = "",
+        val loginError: Boolean = false,
+        val passwordError: Boolean = false,
     ) : MviState
 
     sealed interface Effect : MviEffect {
         data object NavigateToMain : Effect
         data object NavigateToRegistration : Effect
+        data object ShowToastNotUser : Effect
+        data object ShowToastWrongLoginPassword : Effect
     }
 }

@@ -14,6 +14,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -31,6 +32,8 @@ internal fun LoginScreen(
     onEvent: (Event) -> Unit,
     padding: PaddingValues
 ) {
+
+    val focusManager = LocalFocusManager.current
     Scaffold(
         modifier = Modifier
             .fillMaxSize()
@@ -66,6 +69,7 @@ internal fun LoginScreen(
                     onValueChange = { onEvent.invoke(Event.ChangeTextLogin(it)) },
                     label = { Text(text = "Логин") },
                     singleLine = true,
+                    isError = state.loginError,
                 )
                 OutlinedTextField(
                     modifier = Modifier
@@ -75,12 +79,16 @@ internal fun LoginScreen(
                     onValueChange = { onEvent.invoke(Event.ChangeTextPassword(it)) },
                     label = { Text(text = "Пароль") },
                     singleLine = true,
+                    isError = state.passwordError,
                 )
                 Button(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = 64.dp, start = 16.dp, end = 16.dp),
-                    onClick = {}) {
+                    onClick = {
+                        focusManager.clearFocus()
+                        onEvent.invoke(Event.OnClickEntry)
+                    }) {
                     Text(
                         modifier = Modifier.padding(vertical = 8.dp),
                         text = "Войти",
